@@ -1,18 +1,12 @@
 <% unless comment.archived? %>
-  <p>
-    <strong>Commenter:</strong>
-    <%= comment.commenter %>
-  </p>
-
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
-  </p>
-
-  <p>
-    <%= link_to "Destroy Comment", [comment.article, comment], data: {
-                  turbo_method: :delete,
-                  turbo_confirm: "Are you sure?"
-                } %>
-  </p>
+  <div>
+    <div class="p-5">
+      <strong class="text-xl"><%= comment.commenter %>:</strong>
+      <span class="text-xl"><%= comment.body %></span>
+      <%= link_to "Delete Comment", [comment.article, comment], data: {
+                turbo_method: :delete,
+                turbo_confirm: "Are you sure?"
+                }, class:"px-5 py-2 gap-4 text-lg text-center text-black bg-red-100 rounded-xl transform transition-all duration-300 hover:scale-105" %>
+    </div>
+  </div>
 <% end %>
